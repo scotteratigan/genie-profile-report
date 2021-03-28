@@ -17,15 +17,13 @@ func TestExtractDataFromProfile(t *testing.T) {
 		char: "Wizzy",
 		game: "DRF",
 	}
-	cd, err := extractProfileData(exampleProfile)
-	assert.Equal(t, nil, err)
+	cd := extractProfileData(exampleProfile)
 	assert.True(t, reflect.DeepEqual(expectedCD, cd))
 }
 
 func TestExtractDataFromProfileErr(t *testing.T) {
 	exampleProfile := `some malformed file`
 	expectedCD := charData{}
-	cd, err := extractProfileData(exampleProfile)
-	assert.True(t, err != nil)
+	cd := extractProfileData(exampleProfile)
 	assert.True(t, reflect.DeepEqual(expectedCD, cd))
 }
